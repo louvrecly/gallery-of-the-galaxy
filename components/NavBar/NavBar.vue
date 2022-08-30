@@ -15,20 +15,10 @@
 </template>
 
 <script>
-import AppLogo from './Logo'
-
 import scrollHandler from '~/components/mixins/scrollHandler'
-
-const ModalBase = () => import('~/components/ModalBase')
-const PostsFilter = () => import('./PostsFilter')
 
 export default {
   name: 'NavBar',
-  components: {
-    AppLogo,
-    ModalBase,
-    PostsFilter
-  },
   mixins: [scrollHandler],
   data () {
     return {

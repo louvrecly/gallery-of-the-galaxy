@@ -1,5 +1,5 @@
 <template>
-  <h1 class="logo">
+  <h1 class="app-logo">
     <span class="icon">&#129680;</span><span class="title">spacestagram</span>
   </h1>
 </template>
@@ -14,7 +14,7 @@ export default {
 @import ~assets/css/base/typography
 @import ~assets/css/utils/media
 
-.logo
+.app-logo
   color: goldenrod
   font-family: $font-family-logo
 
