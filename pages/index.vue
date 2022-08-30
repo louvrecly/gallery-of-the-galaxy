@@ -36,11 +36,9 @@ export default {
     const { startDate, endDate } = validateDateRange({ startDate: start_date, endDate: end_date }) // eslint-disable-line camelcase
     await store.dispatch('loadPosts', { startDate, endDate, nasaApiKey })
   },
-  data () {
-    return {
-      searchableFields: ['title', 'explanation', 'copyright']
-    }
-  },
+  data: () => ({
+    searchableFields: ['title', 'explanation', 'copyright']
+  }),
   computed: {
     ...mapGetters({
       busy: 'getBusyState',

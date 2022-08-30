@@ -61,11 +61,9 @@ export default {
       default: false
     }
   },
-  data () {
-    return {
-      collapsed: true
-    }
-  },
+  data: () => ({
+    collapsed: true
+  }),
   methods: {
     mediaComponent (mediaType) {
       switch (mediaType) {
