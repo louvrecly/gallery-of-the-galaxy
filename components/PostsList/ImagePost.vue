@@ -6,7 +6,7 @@
         class="media"
         :class="mediaComponent(mediaType)"
         v-bind="mediaProps(mediaType)"
-      ></component>
+      />
     </div>
 
     <div class="container">
@@ -17,7 +17,7 @@
           <p class="date">{{ date }}</p>
         </div>
 
-        <LikeButton class="button" :liked="liked" @toggleLike="toggleLike"></LikeButton>
+        <LikeButton class="button" :liked="liked" @toggleLike="toggleLike" />
       </div>
 
       <div class="body">

@@ -2,10 +2,10 @@
   <div class="home">
     <section class="container responsive-margins">
       <div v-if="filteredPosts.length" class="results">
-        <PostsList :posts="filteredPosts"></PostsList>
+        <PostsList :posts="filteredPosts" />
 
         <button class="button text-button" @click="loadMorePosts">
-          <Spinner v-if="busy"></Spinner>
+          <Spinner v-if="busy" />
 
           <span v-else>LOAD MORE POSTS</span>
         </button>
@@ -15,7 +15,7 @@
         <p class="message">Oops... no posts seem to matched the filter criteria so far.</p>
 
         <button class="button text-button" @click="loadMorePosts">
-          <Spinner v-if="busy"></Spinner>
+          <Spinner v-if="busy" />
 
           <span v-else>LOAD MORE POSTS</span>
         </button>

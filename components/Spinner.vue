@@ -1,7 +1,7 @@
 <template>
   <div class="spinner">
-    <div class="spin-primary" :style="spinnerStyles"></div>
-    <div class="spin-secondary" :style="spinnerStyles"></div>
+    <div class="spin-primary" :style="spinnerStyles" />
+    <div class="spin-secondary" :style="spinnerStyles" />
   </div>
 </template>
 

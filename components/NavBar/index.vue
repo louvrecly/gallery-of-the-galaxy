@@ -1,14 +1,14 @@
 <template>
   <div class="nav-bar" :class="{ solid: !isOnTop }">
     <ModalBase v-if="modalOpened" @close="toggleModalOpened(false)">
-      <PostsFilter @close="toggleModalOpened(false)"></PostsFilter>
+      <PostsFilter @close="toggleModalOpened(false)" />
     </ModalBase>
 
     <div class="container responsive-margins">
-      <AppLogo></AppLogo>
+      <AppLogo />
 
       <button class="button icon-button" :class="{ active: isFilterActive }" @click="toggleModalOpened(true)">
-        <FontAwesomeIcon :icon="['fas', 'filter']"></FontAwesomeIcon>
+        <FontAwesomeIcon :icon="['fas', 'filter']" />
       </button>
     </div>
   </div>

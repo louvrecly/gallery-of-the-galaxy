@@ -1,7 +1,7 @@
 <template>
   <div class="search-bar">
     <label class="label" for="search">
-      <FontAwesomeIcon :icon="['fas', 'search']"></FontAwesomeIcon>
+      <FontAwesomeIcon :icon="['fas', 'search']" />
     </label>
 
     <input
