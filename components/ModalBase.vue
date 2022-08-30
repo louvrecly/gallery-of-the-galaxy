@@ -12,7 +12,6 @@
 
 <script>
 export default {
-  name: 'ModalBase',
   methods: {
     close () {
       this.$emit('close')

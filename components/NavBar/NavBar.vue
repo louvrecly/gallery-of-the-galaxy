@@ -18,7 +18,6 @@
 import scrollHandler from '~/components/mixins/scrollHandler'
 
 export default {
-  name: 'NavBar',
   mixins: [scrollHandler],
   data () {
     return {
