@@ -19,12 +19,10 @@ import scrollHandler from '~/components/mixins/scrollHandler'
 
 export default {
   mixins: [scrollHandler],
-  data () {
-    return {
-      isOnTop: true,
-      modalOpened: false
-    }
-  },
+  data: () => ({
+    isOnTop: true,
+    modalOpened: false
+  }),
   computed: {
     queryParams () {
       return this.$route.query

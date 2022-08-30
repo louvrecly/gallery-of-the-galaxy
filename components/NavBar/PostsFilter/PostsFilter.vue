@@ -12,13 +12,9 @@
 
 <script>
 export default {
-  data () {
-    return {
-      query: {
-        search: ''
-      }
-    }
-  },
+  data: () => ({
+    query: { search: '' }
+  }),
   computed: {
     queryParams () {
       return this.$route.query
