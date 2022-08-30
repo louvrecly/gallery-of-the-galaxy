@@ -6,7 +6,6 @@
 
 <script>
 export default {
-  name: 'LikeButton',
   props: {
     liked: {
       type: Boolean,

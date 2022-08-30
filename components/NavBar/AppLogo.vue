@@ -4,12 +4,6 @@
   </h1>
 </template>
 
-<script>
-export default {
-  name: 'AppLogo'
-}
-</script>
-
 <style lang="sass" scoped>
 @import ~assets/css/base/typography
 @import ~assets/css/utils/media

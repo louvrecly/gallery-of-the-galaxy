@@ -12,7 +12,6 @@
 
 <script>
 export default {
-  name: 'PostsFilter',
   data () {
     return {
       query: {
