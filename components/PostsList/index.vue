@@ -1,6 +1,6 @@
 <template>
   <ul class="posts-list">
-    <image-post
+    <ImagePost
       v-for="(post, idx) in posts"
       :key="idx"
       class="post"
@@ -12,7 +12,7 @@
       :copyright="post.copyright"
       :liked="isPostLiked(post.date)"
       @toggleLikePost="toggleLikePost"
-    ></image-post>
+    ></ImagePost>
   </ul>
 </template>
 

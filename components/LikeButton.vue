@@ -1,6 +1,6 @@
 <template>
   <button class="like-button icon-button" :class="{ liked }" @click="toggleLike">
-    <font-awesome-icon :icon="[iconType, 'heart']"></font-awesome-icon>
+    <FontAwesomeIcon :icon="[iconType, 'heart']" class="icon"></FontAwesomeIcon>
   </button>
 </template>
 
@@ -33,4 +33,7 @@ export default {
 .like-button
   &.liked
     color: crimson
+
+  .icon
+    height: 20px
 </style>

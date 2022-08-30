@@ -17,7 +17,7 @@
           <p class="date">{{ date }}</p>
         </div>
 
-        <like-button class="button" :liked="liked" @toggleLike="toggleLike"></like-button>
+        <LikeButton class="button" :liked="liked" @toggleLike="toggleLike"></LikeButton>
       </div>
 
       <div class="body">
