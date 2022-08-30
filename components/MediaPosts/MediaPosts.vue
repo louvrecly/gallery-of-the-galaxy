@@ -1,6 +1,6 @@
 <template>
-  <ul class="posts-list">
-    <ImagePost
+  <ul class="media-posts">
+    <MediaPost
       v-for="(post, idx) in posts"
       :key="idx"
       class="post"
@@ -20,7 +20,6 @@
 import { mapGetters } from 'vuex'
 
 export default {
-  name: 'PostsList',
   props: {
     posts: {
       type: Array,
@@ -45,7 +44,7 @@ export default {
 <style lang="sass" scoped>
 @import ~assets/css/utils/media
 
-.posts-list
+.media-posts
   color: gold
 
   @media #{$medium-up}
