@@ -2,7 +2,7 @@
   <div class="modal-base" @click.self="close">
     <div class="container">
       <button class="button icon-button" @click="close">
-        <font-awesome-icon :icon="['fas', 'times']"></font-awesome-icon>
+        <FontAwesomeIcon :icon="['fas', 'times']"></FontAwesomeIcon>
       </button>
 
       <slot></slot>
