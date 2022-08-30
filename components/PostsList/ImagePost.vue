@@ -30,11 +30,8 @@
 </template>
 
 <script>
-import LikeButton from '~/components/LikeButton'
-
 export default {
   name: 'ImagePost',
-  components: { LikeButton },
   props: {
     date: {
       type: String,

@@ -29,15 +29,8 @@ import { mapGetters } from 'vuex'
 
 import { validateDateRange, getNextDateRange } from '~/utils/nasaHelper'
 
-const PostsList = () => import('~/components/PostsList')
-const Spinner = () => import('~/components/Spinner')
-
 export default {
   name: 'HomePage',
-  components: {
-    PostsList,
-    Spinner
-  },
   async asyncData ({ store, route: { query }, $config: { nasaApiKey } }) {
     const { start_date, end_date } = query // eslint-disable-line camelcase
     const { startDate, endDate } = validateDateRange({ startDate: start_date, endDate: end_date }) // eslint-disable-line camelcase

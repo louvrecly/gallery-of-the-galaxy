@@ -19,11 +19,8 @@
 <script>
 import { mapGetters } from 'vuex'
 
-import ImagePost from './ImagePost'
-
 export default {
   name: 'PostsList',
-  components: { ImagePost },
   props: {
     posts: {
       type: Array,
