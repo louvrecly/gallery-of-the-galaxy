@@ -1,6 +1,6 @@
 <template>
   <button class="like-button icon-button" :class="{ liked }" @click="toggleLike">
-    <FontAwesomeIcon :icon="[iconType, 'heart']" class="icon"></FontAwesomeIcon>
+    <FontAwesomeIcon :icon="[iconType, 'heart']" class="icon" />
   </button>
 </template>
 

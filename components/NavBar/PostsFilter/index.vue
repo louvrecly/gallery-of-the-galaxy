@@ -3,7 +3,7 @@
     <h2 class="title text-bold">Filter Posts</h2>
 
     <form class="form" @submit.prevent="submitQuery">
-      <SearchBar v-model="query.search" class="search"></SearchBar>
+      <SearchBar v-model="query.search" class="search" />
 
       <button class="button text-button" type="submit">GO!</button>
     </form>

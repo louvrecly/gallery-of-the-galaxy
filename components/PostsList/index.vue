@@ -12,7 +12,7 @@
       :copyright="post.copyright"
       :liked="isPostLiked(post.date)"
       @toggleLikePost="toggleLikePost"
-    ></ImagePost>
+    />
   </ul>
 </template>
 
