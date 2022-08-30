@@ -11,11 +11,8 @@
 </template>
 
 <script>
-import SearchBar from './SearchBar'
-
 export default {
   name: 'PostsFilter',
-  components: { SearchBar },
   data () {
     return {
       query: {
