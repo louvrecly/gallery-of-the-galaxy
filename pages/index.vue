@@ -2,7 +2,7 @@
   <div class="home">
     <section class="container responsive-margins">
       <div v-if="filteredPosts.length" class="results">
-        <PostsList :posts="filteredPosts" />
+        <MediaPosts :posts="filteredPosts" />
 
         <button class="button text-button" @click="loadMorePosts">
           <Spinner v-if="busy" />

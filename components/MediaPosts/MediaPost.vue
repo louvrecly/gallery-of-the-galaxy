@@ -1,5 +1,5 @@
 <template>
-  <li class="post">
+  <li class="media-post">
     <div class="wrapper">
       <component
         :is="mediaComponent(mediaType)"
@@ -31,7 +31,6 @@
 
 <script>
 export default {
-  name: 'ImagePost',
   props: {
     date: {
       type: String,
@@ -102,7 +101,7 @@ export default {
 @import ~assets/css/base/typography
 @import ~assets/css/utils/media
 
-.post
+.media-post
   border-radius: 8px
   box-shadow: 0 5px 10px rgba(#000, 0.3)
   overflow: hidden
