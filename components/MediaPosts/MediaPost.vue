@@ -86,7 +86,7 @@ export default {
       }
     },
     toggleLike (like) {
-      this.$emit('toggleLikePost', { date: this.date, like: !like })
+      this.$emit('like', { date: this.date, like: !like })
     },
     toggleCollapsed () {
       this.collapsed = !this.collapsed

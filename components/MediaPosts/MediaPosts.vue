@@ -11,13 +11,13 @@
       :explanation="post.explanation"
       :copyright="post.copyright"
       :liked="isPostLiked(post.date)"
-      @toggleLikePost="toggleLikePost"
+      @like="toggleLikePostAndSaveInCookies"
     />
   </ul>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   props: {
@@ -30,11 +30,12 @@ export default {
     ...mapGetters({ likedPostDates: 'getLikePostDates' })
   },
   methods: {
+    ...mapActions(['toggleLikePost']),
     isPostLiked (date) {
       return this.likedPostDates.includes(date)
     },
-    toggleLikePost ({ date, like }) {
-      this.$store.dispatch('toggleLikePost', { date, like })
+    toggleLikePostAndSaveInCookies ({ date, like }) {
+      this.toggleLikePost({ date, like })
       this.$cookies.set('liked-post-dates', this.likedPostDates)
     }
   }
