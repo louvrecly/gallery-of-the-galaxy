@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 import { validateDateRange, getNextDateRange } from '~/utils/nasaHelper'
 
@@ -55,6 +55,7 @@ export default {
     }
   },
   methods: {
+    ...mapActions(['loadPosts']),
     comparePost (search) {
       return post => {
         return this.searchableFields.some(field => post[field] && post[field].toLowerCase().includes(search.toLowerCase()))
@@ -63,7 +64,7 @@ export default {
     async loadMorePosts () {
       const { startDate, endDate } = getNextDateRange(this.startDate)
       const { nasaApiKey } = this.$config
-      await this.$store.dispatch('loadPosts', { startDate, endDate, nasaApiKey })
+      await this.loadPosts({ startDate, endDate, nasaApiKey })
     }
   }
 }
