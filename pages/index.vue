@@ -1,24 +1,12 @@
 <template>
   <div class="home">
     <section class="container responsive-margins">
-      <div v-if="filteredPosts.length" class="results">
-        <MediaPosts :posts="filteredPosts" />
+      <div class="results">
+        <MediaPosts v-if="filteredPosts.length" :posts="filteredPosts" />
 
-        <button class="button text-button" @click="loadMorePosts">
-          <Spinner v-if="busy" />
+        <p v-else class="message">Oops... no posts seem to matched the filter criteria so far.</p>
 
-          <span v-else>LOAD MORE POSTS</span>
-        </button>
-      </div>
-
-      <div v-else class="no-results">
-        <p class="message">Oops... no posts seem to matched the filter criteria so far.</p>
-
-        <button class="button text-button" @click="loadMorePosts">
-          <Spinner v-if="busy" />
-
-          <span v-else>LOAD MORE POSTS</span>
-        </button>
+        <TextButton class="button" text="LOAD MORE POSTS" @click="loadMorePosts" />
       </div>
     </section>
   </div>
@@ -41,7 +29,6 @@ export default {
   }),
   computed: {
     ...mapGetters({
-      busy: 'getBusyState',
       posts: 'getPosts',
       startDate: 'getStartDate'
     }),
@@ -61,10 +48,10 @@ export default {
         return this.searchableFields.some(field => post[field] && post[field].toLowerCase().includes(search.toLowerCase()))
       }
     },
-    async loadMorePosts () {
+    loadMorePosts () {
       const { startDate, endDate } = getNextDateRange(this.startDate)
       const { nasaApiKey } = this.$config
-      await this.loadPosts({ startDate, endDate, nasaApiKey })
+      this.loadPosts({ startDate, endDate, nasaApiKey })
     }
   }
 }
@@ -86,20 +73,6 @@ export default {
       padding: 160px 0
 
     .results
-      .button
-        margin: 100px auto
-        width: 240px
-        height: 35px
-        display: block
-        position: relative
-
-    .no-results
-      min-height: 500px
-      display: flex
-      flex-direction: column
-      justify-content: center
-      align-items: center
-
       .message
         margin: 0 0 30px
         color: goldenrod
@@ -110,7 +83,6 @@ export default {
           +font-size-normal
 
       .button
-        width: 240px
-        height: 35px
-        position: relative
+        margin: 100px auto
+        display: block
 </style>
