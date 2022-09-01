@@ -104,6 +104,7 @@ export default {
   box-shadow: 0 5px 10px rgba(#000, 0.3)
   overflow: hidden
   transition: transform .3s ease
+  transform-origin: top center
 
   &:hover
     transform: scale(1.05)
