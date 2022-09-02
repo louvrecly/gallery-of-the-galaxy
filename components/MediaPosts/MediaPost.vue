@@ -170,14 +170,23 @@ export default {
 
       .explanation
         margin: 0 0 20px
+        height: 100%
+        max-height: 1000px
         overflow: hidden
-        transition: all .3s ease
+        transition: max-height .3s ease
 
         &.collapsed
+          max-height: 40px
           display: -webkit-box
           -webkit-line-clamp: 2
           -webkit-box-orient: vertical
           cursor: pointer
+
+          @media #{$tablets-up}
+            max-height: 48px
+
+          @media #{$medium-up}
+            max-height: 52px
 
       .copyright
         text-align: right
