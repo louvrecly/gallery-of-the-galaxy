@@ -1,13 +1,6 @@
 <template>
   <li class="media-post">
-    <div class="wrapper">
-      <component
-        :is="mediaComponent(mediaType)"
-        class="media"
-        :class="mediaComponent(mediaType)"
-        v-bind="mediaProps(mediaType)"
-      />
-    </div>
+    <MediaComponent :url="url" :media-type="mediaType" :title="title" />
 
     <div class="container">
       <div class="header">
@@ -46,15 +39,15 @@ export default {
     },
     title: {
       type: String,
-      default: 'Missing Title'
+      default: "Missing Title"
     },
     explanation: {
       type: String,
-      default: 'Missing Explanation'
+      default: "Missing Explanation"
     },
     copyright: {
       type: String,
-      default: ''
+      default: ""
     },
     liked: {
       type: Boolean,
@@ -65,31 +58,11 @@ export default {
     collapsed: true
   }),
   methods: {
-    mediaComponent (mediaType) {
-      switch (mediaType) {
-        case 'image':
-          return 'img'
-        case 'video':
-          return 'iframe'
-        default:
-          return 'div'
-      }
+    toggleLike(like) {
+      this.$emit("like", { date: this.date, like: !like });
     },
-    mediaProps (mediaType) {
-      switch (mediaType) {
-        case 'image':
-          return { src: this.url, alt: this.title }
-        case 'video':
-          return { src: this.url, title: this.title }
-        default:
-          return {}
-      }
-    },
-    toggleLike (like) {
-      this.$emit('like', { date: this.date, like: !like })
-    },
-    toggleCollapsed () {
-      this.collapsed = !this.collapsed
+    toggleCollapsed() {
+      this.collapsed = !this.collapsed;
     }
   }
 }
@@ -111,29 +84,6 @@ export default {
 
   .wrapper
     display: flex
-
-    .media
-      width: 100%
-      border: none
-
-      &.iframe,
-      &.div
-        height: 230px
-
-        @media #{$tablets-up}
-          height: 510px
-
-        @media #{$medium-up}
-          height: 770px
-
-      &.div
-        background-color: #222
-        display: flex
-        justify-content: center
-        align-items: center
-
-        &:before
-          content: 'Invalid Media Type'
 
   .container
     .header
