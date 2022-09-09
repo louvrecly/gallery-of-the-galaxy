@@ -3,6 +3,11 @@ import moment from 'moment'
 const oldestStartDate = '2021-01-01' // oldest available start date: '1995-06-16'
 const defaultNumOfPosts = 14
 
+export function validateDateString(dateString = '') {
+  const date = moment(dateString)
+  return date.isValid() && date.isBetween(oldestStartDate, moment(), 'day', '[]')
+}
+
 export function validateDateRange({ startDate, endDate }) {
   return startDate && moment(startDate).isBetween(oldestStartDate, endDate, 'day', '[]')
     ? { startDate, endDate }
