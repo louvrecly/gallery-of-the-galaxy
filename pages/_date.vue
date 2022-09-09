@@ -1,12 +1,12 @@
 <template>
   <div class="post-page">
-    <div class="header">
+    <MediaCanvas class="canvas top">
       <IconButton class="close" icon-name="rocket" icon-type="fas" @click="navigateToHome" />
-    </div>
+    </MediaCanvas>
 
     <MediaComponent class="media" :url="post.hdurl" :media-type="post.media_type" :title="post.title" />
 
-    <div class="canvas">
+    <MediaCanvas class="canvas bottom" angle="180deg">
       <MediaPostContent
         :date="post.date"
         :title="post.title"
@@ -15,7 +15,7 @@
         :is-liked="isPostLiked(post.date)"
         @like="toggleLike"
       />
-    </div>
+    </MediaCanvas>
   </div>
 </template>
 
@@ -64,34 +64,21 @@ export default {
   align-items: center
   position: relative
 
-  .header
-    padding: 20px 30px
-    width: 100%
+  .canvas
     position: fixed
-    top: 0
-    background-image: linear-gradient(#00000055, #00000000)
-    opacity: 0
-    transition: opacity .7s ease
 
-    &:hover
-      opacity: 1
+    &.top
+      top: 0
+
+    &.bottom
+      bottom: 0
 
     .close
+      margin: 20px
       color: gold
       float: right
 
   .media
     height: 100%
     max-width: 100%
-
-  .canvas
-    width: 100%
-    background-image: linear-gradient(#00000000, #000000FF)
-    position: fixed
-    bottom: 0
-    opacity: 0
-    transition: opacity .7s ease
-
-    &:hover
-      opacity: 1
 </style>
