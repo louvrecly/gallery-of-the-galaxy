@@ -7,7 +7,7 @@
       :title="title"
       :explanation="explanation"
       :copyright="copyright"
-      :liked="liked"
+      :is-liked="isLiked"
       @like="toggleLike"
       @infoOnClick="navigateToPost"
     />
@@ -41,7 +41,7 @@ export default {
       type: String,
       default: ""
     },
-    liked: {
+    isLiked: {
       type: Boolean,
       default: false
     }

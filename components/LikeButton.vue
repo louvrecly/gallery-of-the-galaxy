@@ -1,7 +1,7 @@
 <template>
   <IconButton
     class="like-button"
-    :class="{ liked }"
+    :class="{ liked: isLiked }"
     icon-name="heart"
     :icon-type="iconType"
     @click="toggleLike"
@@ -11,19 +11,19 @@
 <script>
 export default {
   props: {
-    liked: {
+    isLiked: {
       type: Boolean,
       default: false
     }
   },
   computed: {
     iconType () {
-      return this.liked ? 'fas' : 'far'
+      return this.isLiked ? 'fas' : 'far'
     }
   },
   methods: {
     toggleLike () {
-      this.$emit('toggleLike', this.liked)
+      this.$emit('toggleLike', this.isLiked)
     }
   }
 }

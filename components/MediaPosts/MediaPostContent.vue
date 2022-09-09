@@ -7,7 +7,7 @@
         <p class="date">{{ date }}</p>
       </div>
 
-      <LikeButton class="button" :liked="liked" @toggleLike="toggleLike" />
+      <LikeButton class="button" :is-liked="isLiked" @toggleLike="toggleLike" />
     </div>
 
     <div class="body">
@@ -37,7 +37,7 @@ export default {
       type: String,
       default: ""
     },
-    liked: {
+    isLiked: {
       type: Boolean,
       default: false
     }

@@ -10,7 +10,7 @@
       :title="post.title"
       :explanation="post.explanation"
       :copyright="post.copyright"
-      :liked="isPostLiked(post.date)"
+      :is-liked="isPostLiked(post.date)"
       @like="toggleLikePostAndSaveInCookies"
     />
   </ul>
@@ -46,8 +46,6 @@ export default {
 @import ~assets/css/utils/media
 
 .media-posts
-  color: gold
-
   @media #{$medium-up}
     display: flex
     justify-content: space-between
