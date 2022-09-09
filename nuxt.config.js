@@ -63,6 +63,10 @@ export default {
     }
   },
 
+  serverMiddleware: {
+    '/spacestagram-vue': '~/serverMiddleware/redirectRoute.js'
+  },
+
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
   publicRuntimeConfig: {
