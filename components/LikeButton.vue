@@ -1,7 +1,11 @@
 <template>
-  <button class="like-button icon-button" :class="{ liked }" @click="toggleLike">
-    <FontAwesomeIcon :icon="[iconType, 'heart']" class="icon" />
-  </button>
+  <IconButton
+    class="like-button"
+    :class="{ liked }"
+    icon-name="heart"
+    :icon-type="iconType"
+    @click="toggleLike"
+  />
 </template>
 
 <script>
@@ -26,13 +30,9 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-@import ~assets/css/base/typography
-@import ~assets/css/utils/media
-
 .like-button
+  transition: color .3s ease
+
   &.liked
     color: crimson
-
-  .icon
-    height: 20px
 </style>
