@@ -61,7 +61,6 @@ export default {
     min-height: 100%
     border: none
 
-    &.iframe,
     &.div
       padding: 30px
       background-color: #222
