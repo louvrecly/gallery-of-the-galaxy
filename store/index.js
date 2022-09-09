@@ -39,6 +39,8 @@ export const actions = {
     if (likedPostDates) commit('SET_LIKED_POST_DATES', likedPostDates)
   },
   async loadPosts ({ commit, state }, { startDate, endDate, nasaApiKey }) {
+    if (state.startDate === startDate && state.posts.length) return state.posts
+
     commit('SET_BUSY_STATE', true)
 
     const posts = await this.$axios.$get('/planetary/apod', {
