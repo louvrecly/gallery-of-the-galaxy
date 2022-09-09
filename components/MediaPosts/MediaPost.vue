@@ -1,6 +1,8 @@
 <template>
   <li class="media-post">
-    <MediaComponent :url="url" :media-type="mediaType" :title="title" />
+    <NuxtLink :to="postLink">
+      <MediaComponent :url="url" :media-type="mediaType" :title="title" />
+    </NuxtLink>
 
     <MediaPostContent
       :date="date"
@@ -46,9 +48,17 @@ export default {
       default: false
     }
   },
+  computed: {
+    postLink () {
+      return { name: 'date', params: { date: this.date } }
+    }
+  },
   methods: {
     toggleLike(like) {
       this.$emit("like", { date: this.date, like: !like })
+    },
+    navigateToPost () {
+      return this.$router.push(this.postLink)
     }
   }
 }
