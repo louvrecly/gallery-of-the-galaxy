@@ -5,7 +5,9 @@
     </ModalBase>
 
     <div class="container responsive-margins">
-      <AppLogo />
+      <NuxtLink class="link" :to="{ name: 'index' }">
+        <AppLogo />
+      </NuxtLink>
 
       <button class="button icon-button" :class="{ active: isFilterActive }" @click="toggleModalOpened(true)">
         <FontAwesomeIcon :icon="['fas', 'filter']" />
@@ -72,6 +74,9 @@ export default {
 
     @media #{$tablets-up}
       padding: 20px 0 25px
+
+    .link
+      text-decoration: none
 
     .button
       &.active
