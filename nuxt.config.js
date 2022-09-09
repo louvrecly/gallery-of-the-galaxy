@@ -1,12 +1,12 @@
 export default {
   target: 'static',
   router: {
-    base: '/spacestagram-vue'
+    base: '/gallery-of-the-galaxy'
   },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: '🪐 spacestagram',
+    title: '🪐 gallery-of-the-galaxy',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },

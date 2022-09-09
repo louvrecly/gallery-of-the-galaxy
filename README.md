@@ -1,8 +1,8 @@
-# 🪐 spacestagram-vue
+# 🪐 Gallery of the Galaxy
 
 ## Deployed Version on GitHub Pages
 A deployed live demo is available here in this link:
-[https://louvrecly.github.io/spacestagram-vue](https://louvrecly.github.io/spacestagram-vue)
+[https://louvrecly.github.io/gallery-of-the-galaxy](https://louvrecly.github.io/gallery-of-the-galaxy)
 
 ### Description
 This is a project to create an image-sharing platform UI for visitors to browse one of the NASA's image APIs, [Astronomy Picture of the Day](https://api.nasa.gov/#apod).

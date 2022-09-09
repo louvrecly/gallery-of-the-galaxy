@@ -1,6 +1,6 @@
 <template>
   <h1 class="app-logo">
-    <span class="icon">&#129680;</span><span class="title">spacestagram</span>
+    <span class="icon">&#129680;</span><span class="title">Gallery of the Galaxy</span>
   </h1>
 </template>
 
