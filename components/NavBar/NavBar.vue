@@ -60,20 +60,20 @@ export default {
     box-shadow: 0 5px 10px rgba(#000, 0.3)
 
     .container
-      padding: 0 0 5px
+      padding: 5px 0
 
       @media #{$tablets-up}
-        padding: 10px 0 15px
+        padding: 15px 0
 
   .container
-    padding: 15px 0 20px
+    padding: 20px 0
     display: flex
     justify-content: space-between
     align-items: center
     transition: padding .3s ease
 
     @media #{$tablets-up}
-      padding: 20px 0 25px
+      padding: 25px 0
 
     .link
       text-decoration: none
