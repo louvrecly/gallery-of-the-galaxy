@@ -53,26 +53,28 @@ export default {
 <style lang="sass" scoped>
 @import ~assets/css/utils/media
 
-.media
-  width: 100%
-  border: none
+.wrapper
+  display: flex
 
-  &.iframe,
-  &.div
-    height: 230px
+  .media
+    min-width: 100%
+    min-height: 100%
+    border: none
 
-    @media #{$tablets-up}
-      height: 510px
+    &.iframe,
+    &.div
+      padding: 30px
+      background-color: #222
+      color: gold
+      border-radius: 8px
+      display: flex
+      justify-content: center
+      align-items: center
+      transition: background-color .3s ease
 
-    @media #{$medium-up}
-      height: 770px
+      &::before
+        content: 'Invalid Media Type'
 
-  &.div
-    background-color: #222
-    display: flex
-    justify-content: center
-    align-items: center
-
-    &:before
-      content: 'Invalid Media Type'
+      &:hover
+        background-color: #202020
 </style>

@@ -32,7 +32,7 @@ export default {
   justify-content: center
   align-items: center
 
-  &:before
+  &::before
     content: ''
     width: 100%
     height: 100%
