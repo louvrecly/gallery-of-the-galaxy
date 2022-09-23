@@ -15,13 +15,12 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 
-import { validateDateRange, getNextDateRange } from '~/utils/nasaHelper'
+import { getNextDateRange } from '~/utils/nasaHelper'
 
 export default {
   name: 'HomePage',
-  async asyncData ({ store, route: { query }, $config: { nasaApiKey } }) {
-    const { start_date, end_date } = query // eslint-disable-line camelcase
-    const { startDate, endDate } = validateDateRange({ startDate: start_date, endDate: end_date }) // eslint-disable-line camelcase
+  async asyncData ({ store, $config: { nasaApiKey } }) {
+    const { startDate, endDate } = getNextDateRange()
     await store.dispatch('loadPosts', { startDate, endDate, nasaApiKey })
   },
   data: () => ({
