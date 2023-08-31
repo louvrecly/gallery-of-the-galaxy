@@ -1,10 +1,10 @@
 <template>
   <div class="post-page">
+    <MediaComponent class="media" :url="post.hdurl || post.url" :media-type="post.media_type" :title="post.title" />
+
     <MediaCanvas class="canvas top">
       <IconButton class="close" icon-name="rocket" icon-type="fas" @click="navigateToHome" />
     </MediaCanvas>
-
-    <MediaComponent class="media" :url="post.hdurl" :media-type="post.media_type" :title="post.title" />
 
     <MediaCanvas class="canvas bottom" angle="180deg">
       <MediaPostContent
@@ -64,6 +64,16 @@ export default {
   align-items: center
   position: relative
 
+  .media
+    // height: 100%
+    // width: auto
+    // height: auto
+    width: 100%
+    height: 100%
+    // max-width: 100%
+    // max-height: 100%
+    position: absolute
+
   .canvas
     position: fixed
 
@@ -77,8 +87,4 @@ export default {
       margin: 20px
       color: gold
       float: right
-
-  .media
-    height: 100%
-    max-width: 100%
 </style>

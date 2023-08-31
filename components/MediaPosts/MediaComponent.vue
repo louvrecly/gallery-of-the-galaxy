@@ -1,7 +1,10 @@
 <template>
   <div class="wrapper">
+    <Spinner v-if="busy" />
+
     <component
       :is="mediaComponent"
+      v-else
       class="media"
       :class="mediaComponent"
       v-bind="mediaProps"
@@ -10,6 +13,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   props: {
     url: {
@@ -26,6 +31,7 @@ export default {
     }
   },
   computed: {
+    ...mapGetters({ busy: 'getBusyState' }),
     mediaComponent () {
       switch (this.mediaType) {
         case 'image':
@@ -55,11 +61,21 @@ export default {
 
 .wrapper
   display: flex
+  justify-content: center
+  align-items: center
 
   .media
-    min-width: 100%
-    min-height: 100%
+    // min-width: 100%
+    // min-height: 100%
+    max-width: 100%
+    max-height: 100%
     border: none
+
+    &.iframe
+      // height: 100%
+      width: 100%
+      // height: auto
+      aspect-ratio: 16 / 9
 
     &.div
       padding: 30px

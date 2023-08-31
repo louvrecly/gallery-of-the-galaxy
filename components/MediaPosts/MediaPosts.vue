@@ -5,7 +5,7 @@
       :key="idx"
       class="post"
       :date="post.date"
-      :url="post.url"
+      :url="previewUrl(post)"
       :media-type="post.media_type"
       :title="post.title"
       :explanation="post.explanation"
@@ -13,6 +13,9 @@
       :is-liked="isPostLiked(post.date)"
       @like="toggleLikePostAndSaveInCookies"
     />
+    <!-- :url="post.url" -->
+    <!-- :url="post.media_type === 'image' ? post.url : post.thumbnail_url" -->
+    <!-- :is-video="isVideo(post)" -->
   </ul>
 </template>
 
@@ -31,6 +34,9 @@ export default {
   },
   methods: {
     ...mapActions(['toggleLikePost']),
+    previewUrl (post) {
+      return post.media_type === 'image' ? post.url : post.thumbnail_url
+    },
     isPostLiked (date) {
       return this.likedPostDates.includes(date)
     },
