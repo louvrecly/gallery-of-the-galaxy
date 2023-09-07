@@ -4,9 +4,15 @@
       <div class="results">
         <MediaPosts v-if="filteredPosts.length" :posts="filteredPosts" />
 
-        <p v-else class="message">Oops... no posts seem to matched the filter criteria so far.</p>
+        <p v-else class="message">
+          Oops... no posts seem to matched the filter criteria so far.
+        </p>
 
-        <TextButton class="button" text="LOAD MORE POSTS" @click="loadMorePosts" />
+        <TextButton
+          class="button"
+          text="LOAD MORE POSTS"
+          @click="loadMorePosts"
+        />
       </div>
     </section>
   </div>
@@ -19,40 +25,49 @@ import { getNextDateRange } from '~/utils/nasaHelper'
 
 export default {
   name: 'HomePage',
-  async asyncData ({ store, $config: { nasaApiKey } }) {
-    const { startDate, endDate } = getNextDateRange()
-    await store.dispatch('loadPosts', { startDate, endDate, nasaApiKey })
-  },
   data: () => ({
-    searchableFields: ['title', 'explanation', 'copyright']
+    searchableFields: ['title', 'explanation', 'copyright'],
   }),
+  async fetch() {
+    const { startDate, endDate } = getNextDateRange()
+    await this.$store
+      .dispatch('loadPosts', {
+        startDate,
+        endDate,
+        nasaApiKey: this.$config.nasaApiKey,
+      })
+  },
   computed: {
     ...mapGetters({
       posts: 'getPosts',
-      startDate: 'getStartDate'
+      startDate: 'getStartDate',
     }),
-    queryParams () {
+    queryParams() {
       return this.$route.query
     },
-    filteredPosts () {
+    filteredPosts() {
       return this.queryParams.search
         ? this.posts.filter(this.comparePost(this.queryParams.search))
         : this.posts
-    }
+    },
   },
   methods: {
     ...mapActions(['loadPosts']),
-    comparePost (search) {
-      return post => {
-        return this.searchableFields.some(field => post[field] && post[field].toLowerCase().includes(search.toLowerCase()))
+    comparePost(search) {
+      return (post) => {
+        return this.searchableFields.some(
+          (field) =>
+            post[field] &&
+            post[field].toLowerCase().includes(search.toLowerCase())
+        )
       }
     },
-    loadMorePosts () {
+    loadMorePosts() {
       const { startDate, endDate } = getNextDateRange(this.startDate)
       const { nasaApiKey } = this.$config
       this.loadPosts({ startDate, endDate, nasaApiKey })
-    }
-  }
+    },
+  },
 }
 </script>
 
