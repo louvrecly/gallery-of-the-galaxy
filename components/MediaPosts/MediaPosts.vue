@@ -1,5 +1,5 @@
 <template>
-  <ul class="media-posts">
+  <div class="media-posts">
     <MediaPost
       v-for="(post, idx) in posts"
       :key="idx"
@@ -13,7 +13,7 @@
       :is-liked="isPostLiked(post.date)"
       @like="toggleLikePostAndSaveInCookies"
     />
-  </ul>
+  </div>
 </template>
 
 <script>
@@ -55,6 +55,15 @@ export default {
     flex-wrap: wrap
 
   .post
+    border-radius: 8px
+    box-shadow: 0 5px 10px rgba(#000, 0.3)
+    overflow: hidden
+    transition: transform .3s ease
+    transform-origin: top center
+
+    &:hover
+      transform: scale(1.05)
+
     @media #{$medium-up}
       width: 460px
       height: fit-content
