@@ -1,19 +1,21 @@
 <template>
-  <li class="media-post">
+  <div class="media-post">
     <NuxtLink class="link" :class="mediaType" :to="postLink">
       <MediaComponent :url="url" :media-type="mediaType" :title="title" />
     </NuxtLink>
 
-    <MediaPostContent
-      :date="date"
-      :title="title"
-      :explanation="explanation"
-      :copyright="copyright"
-      :is-liked="isLiked"
-      @like="toggleLike"
-      @infoOnClick="navigateToPost"
-    />
-  </li>
+    <MediaCanvas class="canvas bottom" :class="{ fixed: isCanvasFixed }" angle="180deg">
+      <MediaPostContent
+        :date="date"
+        :title="title"
+        :explanation="explanation"
+        :copyright="copyright"
+        :is-liked="isLiked"
+        @like="toggleLike"
+        @infoOnClick="navigateToPost"
+      />
+    </MediaCanvas>
+  </div>
 </template>
 
 <script>
@@ -47,6 +49,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    isCanvasFixed: {
+      type: Boolean,
+      default: false,
+    },
   },
   computed: {
     postLink () {
@@ -66,13 +72,16 @@ export default {
 
 <style lang="sass" scoped>
 .media-post
-  border-radius: 8px
-  box-shadow: 0 5px 10px rgba(#000, 0.3)
   position: relative
-  overflow: hidden
-  transition: transform .3s ease
-  transform-origin: top center
 
-  &:hover
-    transform: scale(1.05)
+  .canvas
+    max-height: 100%
+    position: absolute
+    overflow: auto
+
+    &.bottom
+      inset: auto 0 0
+
+    &.fixed
+      position: fixed
 </style>

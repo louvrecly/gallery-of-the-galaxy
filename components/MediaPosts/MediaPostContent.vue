@@ -68,15 +68,6 @@ export default {
 @import ~assets/css/utils/media
 
 .container
-  position: absolute
-  /* bottom: 0 */
-  /* left: 0 */
-  /* right: 0 */
-  inset: auto 0 0
-  background-image: linear-gradient(180deg, transparent 0%, #00000033 10%, #000000DD 100%)
-  max-height: 100%
-  overflow: auto
-
   .header
     padding: 20px 20px 10px
     display: flex

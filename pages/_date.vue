@@ -1,26 +1,21 @@
 <template>
   <div class="post-page">
-    <MediaComponent
-      class="post-media"
+    <MediaPost
+      class="post"
       :class="post.media_type"
+      :date="post.date"
       :url="post.hdurl ?? post.url"
       :media-type="post.media_type"
       :title="post.title"
+      :explanation="post.explanation"
+      :copyright="post.copyright"
+      :is-liked="isPostLiked(post.date)"
+      is-canvas-fixed
+      @like="toggleLikePostAndSaveInCookies"
     />
 
     <MediaCanvas class="canvas top">
       <IconButton class="close" icon-name="rocket" icon-type="fas" @click="navigateToHome" />
-    </MediaCanvas>
-
-    <MediaCanvas class="canvas bottom" angle="180deg">
-      <MediaPostContent
-        :date="post.date"
-        :title="post.title"
-        :explanation="post.explanation"
-        :copyright="post.copyright"
-        :is-liked="isPostLiked(post.date)"
-        @like="toggleLike"
-      />
     </MediaCanvas>
   </div>
 </template>
@@ -71,21 +66,16 @@ export default {
   align-items: center
   position: relative
 
-  .post-media
-    width: 100%
-    position: absolute
-
+  .post
     &.video
-      height: 100%
+      width: 100%
+      aspect-ratio: 4 / 3
 
   .canvas
     position: fixed
 
     &.top
       top: 0
-
-    &.bottom
-      bottom: 0
 
     .close
       margin: 20px
