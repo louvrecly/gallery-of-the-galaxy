@@ -5,8 +5,8 @@
       :key="idx"
       class="post"
       :date="post.date"
-      :url="post.url"
-      :media-type="post.media_type"
+      :url="previewUrl(post)"
+      media-type="image"
       :title="post.title"
       :explanation="post.explanation"
       :copyright="post.copyright"
@@ -31,6 +31,9 @@ export default {
   },
   methods: {
     ...mapActions(['toggleLikePost']),
+    previewUrl (post) {
+      return post.media_type === 'image' ? post.url : post.thumbnail_url
+    },
     isPostLiked (date) {
       return this.likedPostDates.includes(date)
     },

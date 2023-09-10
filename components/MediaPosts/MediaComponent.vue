@@ -61,6 +61,9 @@ export default {
     height: auto
     border: none
 
+    &.video
+      aspect-ratio: 4 / 3
+
     &.div
       padding: 30px
       background-color: #222

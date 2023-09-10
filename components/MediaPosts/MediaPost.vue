@@ -1,6 +1,6 @@
 <template>
   <li class="media-post">
-    <NuxtLink :to="postLink">
+    <NuxtLink class="link" :class="mediaType" :to="postLink">
       <MediaComponent :url="url" :media-type="mediaType" :title="title" />
     </NuxtLink>
 
@@ -21,32 +21,32 @@ export default {
   props: {
     date: {
       type: String,
-      required: true
+      required: true,
     },
     url: {
       type: String,
-      required: true
+      required: true,
     },
     mediaType: {
       type: String,
-      required: true
+      required: true,
     },
     title: {
       type: String,
-      default: "Missing Title"
+      default: 'Missing Title',
     },
     explanation: {
       type: String,
-      default: "Missing Explanation"
+      default: 'Missing Explanation',
     },
     copyright: {
       type: String,
-      default: ""
+      default: '',
     },
     isLiked: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   computed: {
     postLink () {
@@ -55,7 +55,7 @@ export default {
   },
   methods: {
     toggleLike(like) {
-      this.$emit("like", { date: this.date, like: !like })
+      this.$emit('like', { date: this.date, like: !like })
     },
     navigateToPost () {
       return this.$router.push(this.postLink)
@@ -68,6 +68,7 @@ export default {
 .media-post
   border-radius: 8px
   box-shadow: 0 5px 10px rgba(#000, 0.3)
+  position: relative
   overflow: hidden
   transition: transform .3s ease
   transform-origin: top center

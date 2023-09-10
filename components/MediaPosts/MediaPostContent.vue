@@ -11,9 +11,13 @@
     </div>
 
     <div class="body">
-      <p class="explanation" :class="{ collapsed }" @click="toggleCollapsed">{{ explanation }}</p>
+      <p class="explanation" :class="{ collapsed }" @click="toggleCollapsed">
+        {{ explanation }}
+      </p>
 
-      <p v-if="copyright" class="copyright text-italic">&#169; {{ copyright }}</p>
+      <p v-if="copyright" class="copyright text-italic">
+        &#169; {{ copyright }}
+      </p>
     </div>
   </div>
 </template>
@@ -23,39 +27,39 @@ export default {
   props: {
     date: {
       type: String,
-      required: true
+      required: true,
     },
     title: {
       type: String,
-      default: "Missing Title"
+      default: 'Missing Title',
     },
     explanation: {
       type: String,
-      default: "Missing Explanation"
+      default: 'Missing Explanation',
     },
     copyright: {
       type: String,
-      default: ""
+      default: '',
     },
     isLiked: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   data: () => ({
-    collapsed: true
+    collapsed: true,
   }),
   methods: {
-    infoOnClick () {
+    infoOnClick() {
       return this.$emit('infoOnClick', this.date)
     },
-    toggleLike (like) {
-      this.$emit("like", like);
+    toggleLike(like) {
+      this.$emit('like', like)
     },
     toggleCollapsed() {
-      this.collapsed = !this.collapsed;
-    }
-  }
+      this.collapsed = !this.collapsed
+    },
+  },
 }
 </script>
 
@@ -64,6 +68,15 @@ export default {
 @import ~assets/css/utils/media
 
 .container
+  position: absolute
+  /* bottom: 0 */
+  /* left: 0 */
+  /* right: 0 */
+  inset: auto 0 0
+  background-image: linear-gradient(180deg, transparent 0%, #00000033 10%, #000000DD 100%)
+  max-height: 100%
+  overflow: auto
+
   .header
     padding: 20px 20px 10px
     display: flex
