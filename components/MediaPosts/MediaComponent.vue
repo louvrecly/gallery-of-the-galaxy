@@ -3,7 +3,7 @@
     <component
       :is="mediaComponent"
       class="media"
-      :class="mediaComponent"
+      :class="mediaType"
       v-bind="mediaProps"
     />
   </div>
@@ -57,8 +57,8 @@ export default {
   display: flex
 
   .media
-    min-width: 100%
-    min-height: 100%
+    width: 100%
+    height: auto
     border: none
 
     &.div

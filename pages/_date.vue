@@ -1,10 +1,16 @@
 <template>
   <div class="post-page">
+    <MediaComponent
+      class="post-media"
+      :class="post.media_type"
+      :url="post.hdurl ?? post.url"
+      :media-type="post.media_type"
+      :title="post.title"
+    />
+
     <MediaCanvas class="canvas top">
       <IconButton class="close" icon-name="rocket" icon-type="fas" @click="navigateToHome" />
     </MediaCanvas>
-
-    <MediaComponent class="media" :url="post.hdurl" :media-type="post.media_type" :title="post.title" />
 
     <MediaCanvas class="canvas bottom" angle="180deg">
       <MediaPostContent
@@ -28,6 +34,7 @@ export default {
   async asyncData ({ store, redirect, route: { params }, $config: { nasaApiKey } }) {
     if (!params || !params.date || !validateDateString(params.date)) return redirect(301, { name: 'index' })
     const post = await store.dispatch('loadPost', { date: params.date, nasaApiKey })
+    if (!post) return redirect(301, { name: 'index' })
     return { post }
   },
   computed: {
@@ -64,6 +71,13 @@ export default {
   align-items: center
   position: relative
 
+  .post-media
+    width: 100%
+    position: absolute
+
+    &.video
+      height: 100%
+
   .canvas
     position: fixed
 
@@ -77,8 +91,4 @@ export default {
       margin: 20px
       color: gold
       float: right
-
-  .media
-    height: 100%
-    max-width: 100%
 </style>
