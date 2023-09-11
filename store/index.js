@@ -1,5 +1,6 @@
 export const state = () => ({
   busy: false,
+  isNavBarTranslucent: false,
   postsMap: {},
   dates: [],
   likedPostDates: [],
@@ -7,6 +8,7 @@ export const state = () => ({
 
 export const getters = {
   getBusyState: (state) => state.busy,
+  getNavBarTranslucentState: (state) => state.isNavBarTranslucent,
   getPosts: (state) => state.dates.map((date) => state.postsMap[date]),
   getStartDate: (state) => state.dates[state.dates.length - 1],
   getLikePostDates: (state) => state.likedPostDates,
@@ -15,6 +17,9 @@ export const getters = {
 export const mutations = {
   SET_BUSY_STATE(state, busy) {
     state.busy = busy
+  },
+  SET_NAVBAR_TRANSLUCENT_STATE(state, isNavBarTranslucent) {
+    state.isNavBarTranslucent = isNavBarTranslucent
   },
   ADD_TO_POSTS_MAP(state, posts = []) {
     state.postsMap = posts.reduce((subMap, post) => {
@@ -42,6 +47,9 @@ export const actions = {
   nuxtClientInit({ commit }, { app }) {
     const likedPostDates = app.$cookies.get('liked-post-dates')
     if (likedPostDates) commit('SET_LIKED_POST_DATES', likedPostDates)
+  },
+  setNavBarTranslucentState({ commit }, isNavBarTranslucent = false) {
+    commit('SET_NAVBAR_TRANSLUCENT_STATE', isNavBarTranslucent)
   },
   loadPosts({ commit, getters }, { startDate, endDate, nasaApiKey }) {
     if (startDate === endDate || startDate >= getters.getStartDate) return

@@ -1,7 +1,8 @@
 <template>
-  <div
+  <component
+    :is="navBarComponent"
     class="nav-bar"
-    :class="{ solid: isSolid }"
+    :class="{ solid: isSolid, [navBarComponent]: true }"
     @mouseenter="setHovered(true)"
     @mouseleave="setHovered(false)"
   >
@@ -9,7 +10,13 @@
       <PostsFilter @close="toggleModalOpened(false)" />
     </ModalBase>
 
-    <div class="container responsive-margins">
+    <div
+      class="container"
+      :class="{
+        'responsive-margins': !getNavBarTranslucentState,
+        translucent: getNavBarTranslucentState,
+      }"
+    >
       <NuxtLink class="link" :to="{ name: 'index' }">
         <AppLogo />
       </NuxtLink>
@@ -22,10 +29,11 @@
         @click="toggleModalOpened(true)"
       />
     </div>
-  </div>
+  </component>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import scrollHandler from '~/components/mixins/scrollHandler'
 
 export default {
@@ -36,6 +44,10 @@ export default {
     modalOpened: false,
   }),
   computed: {
+    ...mapGetters(['getNavBarTranslucentState']),
+    navBarComponent() {
+      return this.getNavBarTranslucentState ? 'media-canvas' : 'div'
+    },
     isSolid() {
       return !this.isOnTop || this.isHovered
     },
@@ -66,20 +78,18 @@ export default {
 @import ~assets/css/components/section
 
 .nav-bar
-  width: 100%
-  position: fixed
-  z-index: 10
   transition: all .3s ease
 
-  &.solid
-    background-image: $background-gradient-light
-    box-shadow: 0 5px 10px rgba(#000, 0.3)
+  &.div
+    &.solid
+      background-image: $background-gradient-light
+      box-shadow: 0 5px 10px rgba(#000, 0.3)
 
-    .container
-      padding: 5px 0
+      .container
+        padding: 5px 0
 
-      @media #{$tablets-up}
-        padding: 10px 0
+        @media #{$tablets-up}
+          padding: 10px 0
 
   .container
     padding: 20px 0
@@ -90,6 +100,12 @@ export default {
 
     @media #{$tablets-up}
       padding: 25px 0
+
+    &.translucent
+      padding: 20px
+
+      @media #{$tablets-up}
+        padding: 25px 30px
 
     .link
       text-decoration: none
