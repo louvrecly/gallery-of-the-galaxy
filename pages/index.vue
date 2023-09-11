@@ -89,6 +89,7 @@ export default {
 
   .container
     padding: 120px 0 100px
+    position: relative
 
     @media #{$tablets-up}
       padding: 160px 0
