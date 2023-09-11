@@ -1,5 +1,10 @@
 <template>
-  <div class="nav-bar" :class="{ solid: !isOnTop }">
+  <div
+    class="nav-bar"
+    :class="{ solid: isSolid }"
+    @mouseenter="setHovered(true)"
+    @mouseleave="setHovered(false)"
+  >
     <ModalBase v-if="modalOpened" @close="toggleModalOpened(false)">
       <PostsFilter @close="toggleModalOpened(false)" />
     </ModalBase>
@@ -27,9 +32,13 @@ export default {
   mixins: [scrollHandler],
   data: () => ({
     isOnTop: true,
+    isHovered: false,
     modalOpened: false,
   }),
   computed: {
+    isSolid() {
+      return !this.isOnTop || this.isHovered
+    },
     queryParams() {
       return this.$route.query
     },
@@ -40,6 +49,9 @@ export default {
   methods: {
     handleScroll() {
       this.isOnTop = (window.scrollY || window.pageYOffset) <= 40
+    },
+    setHovered(isHovered) {
+      this.isHovered = isHovered
     },
     toggleModalOpened(opened) {
       this.modalOpened = opened
