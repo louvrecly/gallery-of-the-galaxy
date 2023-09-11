@@ -17,7 +17,7 @@ export function getNextDateRange(oldStartDate) {
     : moment()
   const daysCount = Math.min(
     endDateMoment.diff(earliestStartDateMoment, 'days'),
-    DEFAULT_DAYS_COUNT
+    DEFAULT_DAYS_COUNT,
   )
   const endDate = endDateMoment.format('YYYY-MM-DD')
   const startDate = moment(endDate)

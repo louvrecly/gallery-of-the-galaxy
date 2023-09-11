@@ -57,7 +57,7 @@ export default {
         return this.searchableFields.some(
           (field) =>
             post[field] &&
-            post[field].toLowerCase().includes(search.toLowerCase())
+            post[field].toLowerCase().includes(search.toLowerCase()),
         )
       }
     },
