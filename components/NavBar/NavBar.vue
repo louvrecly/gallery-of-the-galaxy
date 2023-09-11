@@ -63,7 +63,7 @@ export default {
       padding: 5px 0
 
       @media #{$tablets-up}
-        padding: 15px 0
+        padding: 10px 0
 
   .container
     padding: 20px 0
