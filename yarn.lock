@@ -6791,7 +6791,7 @@ nuxt-client-init-module@^0.3.0:
   resolved "https://registry.yarnpkg.com/nuxt-client-init-module/-/nuxt-client-init-module-0.3.0.tgz#e11cb2c4a0dc103a45af33fc8a0d520693c43b44"
   integrity sha512-blPr3zPRdu89WQVt/B38nhFAcNkxL68mM0POmmg6u5s3wUVmwKM1ARMl3xcQSGS//6JbGFV7fgBSQfj0t+cdPw==
 
-nuxt@^2.15.8:
+nuxt@^2.17.0:
   version "2.17.1"
   resolved "https://registry.yarnpkg.com/nuxt/-/nuxt-2.17.1.tgz#132a8812df48bf2df2fa9c890e63268600d06ce3"
   integrity sha512-II27v3nRmqsNMT6tNRIodlRPCuIO8RF6NrfsLh7MX0UVI7//HlEG54ivWzxWB2rfqBTDSRxrETPH7NGE+m1H7A==
