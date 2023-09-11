@@ -32,12 +32,11 @@ export default {
   }),
   async fetch() {
     const { startDate, endDate } = getNextDateRange()
-    await this.$store
-      .dispatch('loadPosts', {
-        startDate,
-        endDate,
-        nasaApiKey: this.$config.nasaApiKey,
-      })
+    await this.$store.dispatch('loadPosts', {
+      startDate,
+      endDate,
+      nasaApiKey: this.$config.nasaApiKey,
+    })
   },
   computed: {
     ...mapGetters({

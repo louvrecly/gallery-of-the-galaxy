@@ -23,25 +23,25 @@ export default {
   props: {
     posts: {
       type: Array,
-      default: () => []
-    }
+      default: () => [],
+    },
   },
   computed: {
-    ...mapGetters({ likedPostDates: 'getLikePostDates' })
+    ...mapGetters({ likedPostDates: 'getLikePostDates' }),
   },
   methods: {
     ...mapActions(['toggleLikePost']),
-    previewUrl (post) {
+    previewUrl(post) {
       return post.media_type === 'image' ? post.url : post.thumbnail_url
     },
-    isPostLiked (date) {
+    isPostLiked(date) {
       return this.likedPostDates.includes(date)
     },
-    toggleLikePostAndSaveInCookies ({ date, like }) {
+    toggleLikePostAndSaveInCookies({ date, like }) {
       this.toggleLikePost({ date, like })
       this.$cookies.set('liked-post-dates', this.likedPostDates)
-    }
-  }
+    },
+  },
 }
 </script>
 

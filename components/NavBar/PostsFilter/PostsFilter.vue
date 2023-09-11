@@ -13,30 +13,28 @@
 <script>
 export default {
   data: () => ({
-    query: { search: '' }
+    query: { search: '' },
   }),
   computed: {
-    queryParams () {
+    queryParams() {
       return this.$route.query
-    }
+    },
   },
-  created () {
+  created() {
     if (this.queryParams.search) this.query.search = this.queryParams.search
   },
   methods: {
-    submitQuery () {
+    submitQuery() {
       const query = Object.keys(this.query).reduce((subquery, key) => {
         const queryValue = this.query[key]
-        return queryValue
-         ? { ...subquery, [key]: queryValue }
-         : subquery
+        return queryValue ? { ...subquery, [key]: queryValue } : subquery
       }, {})
       const route = { name: 'index', query }
 
       this.$router.push(route)
       this.$emit('close')
-    }
-  }
+    },
+  },
 }
 </script>
 

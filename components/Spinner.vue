@@ -8,37 +8,32 @@
 
 <script>
 export default {
-  name: 'LoadingSpinner'
-}
-</script>
-
-<script>
-  export default {
-    props: {
-      size: {
-        type: String,
-        default: '16px'
-      },
-      color: {
-        type: String,
-        default: '#fff'
-      },
-      width: {
-        type: String,
-        default: '2px'
+  name: 'LoadingSpinner',
+  props: {
+    size: {
+      type: String,
+      default: '16px',
+    },
+    color: {
+      type: String,
+      default: '#fff',
+    },
+    width: {
+      type: String,
+      default: '2px',
+    },
+  },
+  computed: {
+    spinnerStyles() {
+      return {
+        height: this.size,
+        width: this.size,
+        borderTopColor: this.color,
+        borderWidth: this.width,
       }
     },
-    computed: {
-      spinnerStyles () {
-        return {
-          height: this.size,
-          width: this.size,
-          borderTopColor: this.color,
-          borderWidth: this.width
-        }
-      }
-    }
-  }
+  },
+}
 </script>
 
 <style lang="sass" scoped>

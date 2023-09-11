@@ -9,22 +9,22 @@ export default {
   props: {
     angle: {
       type: String,
-      default: '0deg'
+      default: '0deg',
     },
     startColor: {
       type: String,
-      default: '#00000000'
+      default: '#00000000',
     },
     endColor: {
       type: String,
-      default: '#00000099'
-    }
+      default: '#00000099',
+    },
   },
   computed: {
-    backgroundImage () {
+    backgroundImage() {
       return `linear-gradient(${this.angle}, ${this.startColor}, ${this.endColor})`
-    }
-  }
+    },
+  },
 }
 </script>
 

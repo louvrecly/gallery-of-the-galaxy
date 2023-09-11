@@ -12,7 +12,7 @@
       :value="value"
       placeholder="Type something here!"
       @input="updateValue"
-    >
+    />
   </div>
 </template>
 
@@ -21,14 +21,14 @@ export default {
   props: {
     value: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
   },
   methods: {
-    updateValue (e) {
+    updateValue(e) {
       this.$emit('input', e.target.value)
-    }
-  }
+    },
+  },
 }
 </script>
 

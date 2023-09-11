@@ -7,23 +7,23 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters } from 'vuex'
 
 export default {
   props: {
     text: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
   },
   computed: {
-    ...mapGetters({ busy: 'getBusyState' })
+    ...mapGetters({ busy: 'getBusyState' }),
   },
   methods: {
-    onClick (e) {
+    onClick(e) {
       this.$emit('click', e)
-    }
-  }
+    },
+  },
 }
 </script>
 

@@ -4,7 +4,11 @@
       <MediaComponent :url="url" :media-type="mediaType" :title="title" />
     </NuxtLink>
 
-    <MediaCanvas class="canvas bottom" :class="{ fixed: isCanvasFixed }" angle="180deg">
+    <MediaCanvas
+      class="canvas bottom"
+      :class="{ fixed: isCanvasFixed }"
+      angle="180deg"
+    >
       <MediaPostContent
         :date="date"
         :title="title"
@@ -55,18 +59,18 @@ export default {
     },
   },
   computed: {
-    postLink () {
+    postLink() {
       return { name: 'date', params: { date: this.date } }
-    }
+    },
   },
   methods: {
     toggleLike(like) {
       this.$emit('like', { date: this.date, like: !like })
     },
-    navigateToPost () {
+    navigateToPost() {
       return this.$router.push(this.postLink)
-    }
-  }
+    },
+  },
 }
 </script>
 

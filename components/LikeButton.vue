@@ -13,19 +13,19 @@ export default {
   props: {
     isLiked: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   computed: {
-    iconType () {
+    iconType() {
       return this.isLiked ? 'fas' : 'far'
-    }
+    },
   },
   methods: {
-    toggleLike () {
+    toggleLike() {
       this.$emit('toggleLike', this.isLiked)
-    }
-  }
+    },
+  },
 }
 </script>
 

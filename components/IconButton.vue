@@ -9,18 +9,18 @@ export default {
   props: {
     iconName: {
       type: String,
-      required: true
+      required: true,
     },
     iconType: {
       type: String,
-      default: 'far'
-    }
+      default: 'far',
+    },
   },
   methods: {
-    onClick (e) {
+    onClick(e) {
       this.$emit('click', e)
-    }
-  }
+    },
+  },
 }
 </script>
 

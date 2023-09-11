@@ -17,7 +17,12 @@
     />
 
     <MediaCanvas class="canvas top">
-      <IconButton class="close" icon-name="rocket" icon-type="fas" @click="navigateToHome" />
+      <IconButton
+        class="close"
+        icon-name="rocket"
+        icon-type="fas"
+        @click="navigateToHome"
+      />
     </MediaCanvas>
   </div>
 </template>
@@ -28,31 +33,40 @@ import { validateDateString } from '~/utils/nasaHelper'
 
 export default {
   layout: 'post',
-  async asyncData ({ store, redirect, route: { params }, $config: { nasaApiKey } }) {
-    if (!params || !params.date || !validateDateString(params.date)) return redirect(301, { name: 'index' })
-    const post = await store.dispatch('loadPost', { date: params.date, nasaApiKey })
+  async asyncData({
+    store,
+    redirect,
+    route: { params },
+    $config: { nasaApiKey },
+  }) {
+    if (!params || !params.date || !validateDateString(params.date))
+      return redirect(301, { name: 'index' })
+    const post = await store.dispatch('loadPost', {
+      date: params.date,
+      nasaApiKey,
+    })
     if (!post) return redirect(301, { name: 'index' })
     return { post }
   },
   computed: {
-    ...mapGetters({ likedPostDates: 'getLikePostDates' })
+    ...mapGetters({ likedPostDates: 'getLikePostDates' }),
   },
   methods: {
     ...mapActions(['toggleLikePost']),
-    isPostLiked (date) {
+    isPostLiked(date) {
       return this.likedPostDates.includes(date)
     },
     toggleLike(like) {
       this.toggleLikePostAndSaveInCookies({ date: this.post.date, like: !like })
     },
-    toggleLikePostAndSaveInCookies ({ date, like }) {
+    toggleLikePostAndSaveInCookies({ date, like }) {
       this.toggleLikePost({ date, like })
       this.$cookies.set('liked-post-dates', this.likedPostDates)
     },
-    navigateToHome () {
+    navigateToHome() {
       return this.$router.push({ name: 'index' })
-    }
-  }
+    },
+  },
 }
 </script>
 

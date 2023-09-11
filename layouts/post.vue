@@ -6,6 +6,6 @@
 
 <script>
 export default {
-  name: 'PostLayout'
+  name: 'PostLayout',
 }
 </script>

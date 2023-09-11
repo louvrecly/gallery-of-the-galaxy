@@ -14,19 +14,19 @@ export default {
   props: {
     url: {
       type: String,
-      required: true
+      required: true,
     },
     mediaType: {
       type: String,
-      required: true
+      required: true,
     },
     title: {
       type: String,
-      default: 'Missing Title'
-    }
+      default: 'Missing Title',
+    },
   },
   computed: {
-    mediaComponent () {
+    mediaComponent() {
       switch (this.mediaType) {
         case 'image':
           return 'img'
@@ -36,7 +36,7 @@ export default {
           return 'div'
       }
     },
-    mediaProps () {
+    mediaProps() {
       switch (this.mediaType) {
         case 'image':
           return { src: this.url, alt: this.title }
@@ -45,8 +45,8 @@ export default {
         default:
           return {}
       }
-    }
-  }
+    },
+  },
 }
 </script>
 

@@ -9,7 +9,11 @@
         <AppLogo />
       </NuxtLink>
 
-      <button class="button icon-button" :class="{ active: isFilterActive }" @click="toggleModalOpened(true)">
+      <button
+        class="button icon-button"
+        :class="{ active: isFilterActive }"
+        @click="toggleModalOpened(true)"
+      >
         <FontAwesomeIcon :icon="['fas', 'filter']" />
       </button>
     </div>
@@ -23,24 +27,24 @@ export default {
   mixins: [scrollHandler],
   data: () => ({
     isOnTop: true,
-    modalOpened: false
+    modalOpened: false,
   }),
   computed: {
-    queryParams () {
+    queryParams() {
       return this.$route.query
     },
-    isFilterActive () {
+    isFilterActive() {
       return Object.keys(this.queryParams).length > 0
-    }
+    },
   },
   methods: {
-    handleScroll () {
+    handleScroll() {
       this.isOnTop = (window.scrollY || window.pageYOffset) <= 40
     },
-    toggleModalOpened (opened) {
+    toggleModalOpened(opened) {
       this.modalOpened = opened
-    }
-  }
+    },
+  },
 }
 </script>
 
