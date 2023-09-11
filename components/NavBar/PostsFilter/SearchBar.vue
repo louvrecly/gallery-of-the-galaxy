@@ -1,7 +1,7 @@
 <template>
   <div class="search-bar">
     <label class="label" for="search">
-      <FontAwesomeIcon :icon="['fas', 'search']" />
+      <FontAwesomeIcon :icon="['fas', 'search']" class="icon" />
     </label>
 
     <input
@@ -38,6 +38,9 @@ export default {
 .search-bar
   .label
     margin: 0 10px 0 0
+
+    .icon
+      height: 20px
 
   .input
     background-color: transparent
