@@ -9,13 +9,13 @@
         <AppLogo />
       </NuxtLink>
 
-      <button
+      <IconButton
         class="button icon-button"
         :class="{ active: isFilterActive }"
+        icon-name="filter"
+        icon-type="fas"
         @click="toggleModalOpened(true)"
-      >
-        <FontAwesomeIcon :icon="['fas', 'filter']" />
-      </button>
+      />
     </div>
   </div>
 </template>

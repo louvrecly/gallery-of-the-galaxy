@@ -1,9 +1,12 @@
 <template>
   <div class="modal-base" @click.self="close">
     <div class="container">
-      <button class="button icon-button" @click="close">
-        <FontAwesomeIcon :icon="['fas', 'times']" />
-      </button>
+      <IconButton
+        class="button icon-button"
+        icon-name="times"
+        icon-type="fas"
+        @click="close"
+      />
 
       <slot />
     </div>
