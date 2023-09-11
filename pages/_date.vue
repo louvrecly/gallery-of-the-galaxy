@@ -1,7 +1,5 @@
 <template>
   <div class="post-page">
-    <GalaxyBackground class="galaxy-background" />
-
     <MediaPost
       class="post"
       :class="post.media_type"
@@ -15,15 +13,6 @@
       is-canvas-fixed
       @like="toggleLikePostAndSaveInCookies"
     />
-
-    <MediaCanvas class="canvas top">
-      <IconButton
-        class="close"
-        icon-name="rocket"
-        icon-type="fas"
-        @click="navigateToHome"
-      />
-    </MediaCanvas>
   </div>
 </template>
 
@@ -32,7 +21,6 @@ import { mapGetters, mapActions } from 'vuex'
 import { validateDateString } from '~/utils/nasaHelper'
 
 export default {
-  layout: 'post',
   async asyncData({
     store,
     redirect,
@@ -46,10 +34,14 @@ export default {
       nasaApiKey,
     })
     if (!post) return redirect(301, { name: 'index' })
+    store.dispatch('setNavBarTranslucentState', true)
     return { post }
   },
   computed: {
     ...mapGetters({ likedPostDates: 'getLikePostDates' }),
+  },
+  beforeDestroy() {
+    this.$store.dispatch('setNavBarTranslucentState', false)
   },
   methods: {
     ...mapActions(['toggleLikePost']),
@@ -76,16 +68,9 @@ export default {
 
 .post-page
   min-height: 100vh
-  background-image: $background-gradient
   display: flex
   justify-content: center
   align-items: center
-  position: relative
-
-  .galaxy-background
-    width: 100%
-    height: 100%
-    position: fixed
 
   .post
     box-shadow: 0 5px 10px rgba(#000, 0.3)

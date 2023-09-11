@@ -1,7 +1,5 @@
 <template>
   <div class="home">
-    <GalaxyBackground class="galaxy-background" />
-
     <section class="container responsive-margins">
       <div class="results">
         <MediaPosts v-if="filteredPosts.length" :posts="filteredPosts" />
@@ -79,17 +77,9 @@ export default {
 
 .home
   min-height: 100vh
-  background-image: $background-gradient
-  position: relative
-
-  .galaxy-background
-    width: 100%
-    height: 100%
-    position: fixed
 
   .container
     padding: 120px 0 100px
-    position: relative
 
     @media #{$tablets-up}
       padding: 160px 0
