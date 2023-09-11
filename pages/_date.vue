@@ -17,10 +17,11 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import useLikeTogglerMixin from '~/components/mixins/useLikeToggler'
 import { validateDateString } from '~/utils/nasaHelper'
 
 export default {
+  mixins: [useLikeTogglerMixin],
   async asyncData({
     store,
     redirect,
@@ -37,27 +38,8 @@ export default {
     store.dispatch('setNavBarTranslucentState', true)
     return { post }
   },
-  computed: {
-    ...mapGetters({ likedPostDates: 'getLikePostDates' }),
-  },
   beforeDestroy() {
     this.$store.dispatch('setNavBarTranslucentState', false)
-  },
-  methods: {
-    ...mapActions(['toggleLikePost']),
-    isPostLiked(date) {
-      return this.likedPostDates.includes(date)
-    },
-    toggleLike(like) {
-      this.toggleLikePostAndSaveInCookies({ date: this.post.date, like: !like })
-    },
-    toggleLikePostAndSaveInCookies({ date, like }) {
-      this.toggleLikePost({ date, like })
-      this.$cookies.set('liked-post-dates', this.likedPostDates)
-    },
-    navigateToHome() {
-      return this.$router.push({ name: 'index' })
-    },
   },
 }
 </script>

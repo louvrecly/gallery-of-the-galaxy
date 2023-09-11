@@ -17,29 +17,19 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import useLikeTogglerMixin from '~/components/mixins/useLikeToggler'
 
 export default {
+  mixins: [useLikeTogglerMixin],
   props: {
     posts: {
       type: Array,
       default: () => [],
     },
   },
-  computed: {
-    ...mapGetters({ likedPostDates: 'getLikePostDates' }),
-  },
   methods: {
-    ...mapActions(['toggleLikePost']),
     previewUrl(post) {
       return post.media_type === 'image' ? post.url : post.thumbnail_url
-    },
-    isPostLiked(date) {
-      return this.likedPostDates.includes(date)
-    },
-    toggleLikePostAndSaveInCookies({ date, like }) {
-      this.toggleLikePost({ date, like })
-      this.$cookies.set('liked-post-dates', this.likedPostDates)
     },
   },
 }
