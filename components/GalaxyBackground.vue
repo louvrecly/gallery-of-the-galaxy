@@ -11,6 +11,8 @@
 </template>
 
 <style lang="sass" scoped>
+@import ~assets/css/components/section
+
 $COLOR_WHITE: #fff
 $COLOR_SKY_TOP: #060431
 $COLOR_SKY_BOTTOM: #406178
@@ -35,17 +37,8 @@ $COLOR_SKY_BOTTOM: #406178
   @each $prefix in -webkit-, -moz-, -ms-, -o-, ""
     #{$prefix}#{$property}: $value
 
-.container
-  position: relative
-  top: calc(50% - 250px)
-  left: calc(50% - 250px)
-  width: 500px
-  height: 500px
-  border-radius: 50%
-  overflow: hidden
-  background: $COLOR_SKY_TOP
-  background: -webkit-linear-gradient(to bottom, $COLOR_SKY_TOP, $COLOR_SKY_BOTTOM)
-  background: linear-gradient(to bottom, $COLOR_SKY_TOP, $COLOR_SKY_BOTTOM)
+.space
+  background-image: $background-gradient
 
 .stars
   position: relative
