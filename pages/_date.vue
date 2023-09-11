@@ -1,5 +1,7 @@
 <template>
   <div class="post-page">
+    <GalaxyBackground class="galaxy-background" />
+
     <MediaPost
       class="post"
       :class="post.media_type"
@@ -66,7 +68,14 @@ export default {
   align-items: center
   position: relative
 
+  .galaxy-background
+    width: 100%
+    height: 100%
+    position: fixed
+
   .post
+    box-shadow: 0 5px 10px rgba(#000, 0.3)
+
     &.video
       width: 100%
       aspect-ratio: 4 / 3
