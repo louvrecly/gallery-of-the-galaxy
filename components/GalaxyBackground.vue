@@ -66,6 +66,7 @@ $COLOR_SKY_BOTTOM: #406178
       @include prefixes(box-shadow, 0 0 20px 10px rgba($COLOR_SKY_TOP, 0.3))
       width: $size + px
       height: $size + px
+      opacity: calc(random(10) / 10)
       @if $i > 250
         @include prefixes(box-shadow, 0 0 20px 5px rgba($COLOR_SKY_BOTTOM, 0.3))
       @if $i % 10 == 0
@@ -96,6 +97,7 @@ $COLOR_SKY_BOTTOM: #406178
         @include prefixes(box-shadow, 0 0 20px $shadowSize rgba(random(255), random(140), 255, 0.8))
         width: $size + px
         height: $size + px
+        opacity: calc(random(10) / 10)
         @if $i > 125
           @include prefixes(box-shadow, 0 0 20px 5px rgba($COLOR_SKY_TOP, 0.3))
 
