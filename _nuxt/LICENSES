@@ -1,3 +1,8 @@
+//! moment.js
+
+//! moment.js locale configuration
+
+
 /*!
  * Vue.js v2.7.10
  * (c) 2014-2022 Evan You
@@ -40,8 +45,3 @@
  * (c) 2018-present egoist <0x142857@gmail.com>
  * Released under the MIT License.
  */
-
-
-//! moment.js
-
-//! moment.js locale configuration
