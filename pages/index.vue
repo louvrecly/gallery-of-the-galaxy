@@ -2,18 +2,20 @@
   <div class="home">
     <section class="container responsive-margins">
       <div class="results">
-        <MediaPosts v-if="filteredPosts.length" :posts="filteredPosts" />
+        <Spinner v-if="busy" />
+
+        <MediaPosts v-else-if="filteredPosts.length" :posts="filteredPosts" />
 
         <p v-else class="message">
           Oops... no posts seem to matched the filter criteria so far.
         </p>
-
-        <TextButton
-          class="button"
-          text="LOAD MORE POSTS"
-          @click="loadMorePosts"
-        />
       </div>
+
+      <TextButton
+        class="button"
+        text="LOAD MORE POSTS"
+        @click="loadMorePosts"
+      />
     </section>
   </div>
 </template>
@@ -28,16 +30,9 @@ export default {
   data: () => ({
     searchableFields: ['title', 'explanation', 'copyright'],
   }),
-  async fetch() {
-    const { startDate, endDate } = getNextDateRange()
-    await this.$store.dispatch('loadPosts', {
-      startDate,
-      endDate,
-      nasaApiKey: this.$config.nasaApiKey,
-    })
-  },
   computed: {
     ...mapGetters({
+      busy: 'getBusyState',
       posts: 'getPosts',
       startDate: 'getStartDate',
     }),
@@ -49,6 +44,9 @@ export default {
         ? this.posts.filter(this.comparePost(this.queryParams.search))
         : this.posts
     },
+  },
+  created() {
+    this.loadMorePosts()
   },
   methods: {
     ...mapActions(['loadPosts']),
@@ -85,6 +83,9 @@ export default {
       padding: 160px 0
 
     .results
+      min-height: 300px
+      position: relative
+
       .message
         margin: 0 0 30px
         color: goldenrod
@@ -94,7 +95,7 @@ export default {
         @media #{$tablets-up}
           +font-size-normal
 
-      .button
-        margin: 100px auto
-        display: block
+    .button
+      margin: 100px auto
+      display: block
 </style>
